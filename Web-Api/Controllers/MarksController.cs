@@ -22,14 +22,14 @@ namespace Web_Api.Controllers
         }
 
         // GET: api/<MarksController>
-        [HttpGet]
+        [HttpGet("Get")]
         public async Task<IActionResult> Get()
         {
             return Ok(await _context.GetAll());
         }
 
         // GET api/<MarksController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById/{id}")]
         public async Task<IActionResult> Get(string id)
         {
             if (id == null)
@@ -47,7 +47,7 @@ namespace Web_Api.Controllers
         }
 
         // POST api/<MarksController>
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Post(MarksModel marksModel)   //create
         {
             if (ModelState.IsValid)
@@ -59,7 +59,7 @@ namespace Web_Api.Controllers
         }
 
         // PUT api/<MarksController>/5
-        [HttpPut]
+        [HttpPut("Edit")]
         public async Task<IActionResult> Put(MarksModel marksModel)    //edit
         {
             if (string.IsNullOrEmpty(marksModel.ID))
@@ -76,7 +76,7 @@ namespace Web_Api.Controllers
         }
 
         // DELETE api/<MarksController>/5
-        [HttpDelete]
+        [HttpDelete("DeleteById/{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
